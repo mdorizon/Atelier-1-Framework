@@ -14,9 +14,9 @@ const RegistrationStep1 = ({step, setStep}: RegistrationStep1Props) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (credentials['account_type'] == '') return;
-        if (credentials['account_type'] != 'personal' || credentials['account_type'] != 'business') return;
+        if (!['personal', 'business'].includes(credentials['account_type'])) return;
 
-        console.log(credentials)
+        setStep(2)
     }
 
     const handleChange = (e: React.ChangeEvent<any>) => {
